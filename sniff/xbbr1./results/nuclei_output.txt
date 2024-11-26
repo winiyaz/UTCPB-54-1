@@ -1,0 +1,3 @@
+[wix-takeover] [http] [high] https://mlcb.analyticsvidhya.com
+[xss-deprecated-header] [http] [info] https://id.analyticsvidhya.com [1; mode=block]
+[google-floc-disabled] [http] [info] https://courses.analyticsvidhya.com
