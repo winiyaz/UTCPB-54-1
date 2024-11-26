@@ -14,3 +14,6 @@
 [http-missing-security-headers:clear-site-data] [http] [info] https://mlcb.analyticsvidhya.com
 [http-missing-security-headers:cross-origin-embedder-policy] [http] [info] https://mlcb.analyticsvidhya.com
 [http-missing-security-headers:cross-origin-resource-policy] [http] [info] https://mlcb.analyticsvidhya.com
+[robots-txt-endpoint] [http] [info] https://r.newsletters.analyticsvidhya.com/robots.txt
+[robots-txt-endpoint] [http] [info] https://id.analyticsvidhya.com/robots.txt
+[tls-sni-proxy] [http] [info] https://r.newsletters.analyticsvidhya.com
