@@ -21,7 +21,7 @@ b1() {
 }
 
 c1() {
-    gowitness scan single --url ${w1}
+    gowitness scan file -f ./files.txt
 }
 
 # Execution
