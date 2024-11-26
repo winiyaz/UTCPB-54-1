@@ -14,10 +14,14 @@ RUN go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 RUN go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 RUN go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
 RUN go install -v github.com/projectdiscovery/katana/cmd/katana@latest
+RUN go install github.com/sensepost/gowitness@latest
 
 # Installing gowitness dependencies
 RUN sudo apt-get install wget -y
-RUN
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
+RUN rm google-chrome-stable_current_amd64.deb
+RUN sudo apt-get install -f -y
 
 # Create final runtime image
 FROM alpine:latest
@@ -26,9 +30,9 @@ FROM alpine:latest
 WORKDIR /app
 
 # Add a non-root user
-RUN adduser -D -H -s /bin/sh appuser &&
-    mkdir -p /app/results /home/appuser/.config &&
-    chown -R appuser:appuser /app /home/appuser/.config
+RUN adduser -D -H -s /bin/sh appuser \
+    && mkdir -p /app/results /home/appuser/.config \
+    && chown -R appuser:appuser /app /home/appuser/.config
 
 # Install required runtime dependencies
 RUN apk add --no-cache libpcap
@@ -55,4 +59,5 @@ ENTRYPOINT ["sh", "-c", "\
     dnsx -l /app/results/subdomains.txt -o /app/results/resolved.txt; \
     httpx -l /app/results/resolved.txt -o /app/results/httpx_output.txt; \
     katana -list /app/results/resolved.txt -jc  -o /app/results/urls.txt; \
-    nuclei -l /app/results/httpx_output.txt -o /app/results/nuclei_output.txt;"]
+    nuclei -l /app/results/httpx_output.txt -o /app/results/nuclei_output.txt; \
+    gowtiness scan file -f /app/results/httpx_output.txt;"]
