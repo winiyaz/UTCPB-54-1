@@ -17,11 +17,11 @@ RUN go install -v github.com/projectdiscovery/katana/cmd/katana@latest
 RUN go install github.com/sensepost/gowitness@latest
 
 # Installing gowitness dependencies
-RUN sudo apt-get install wget -y
+RUN apt-get install wget -y
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN sudo dpkg -i google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb
 RUN rm google-chrome-stable_current_amd64.deb
-RUN sudo apt-get install -f -y
+RUN apt-get install -f -y
 
 # Create final runtime image
 FROM alpine:latest
