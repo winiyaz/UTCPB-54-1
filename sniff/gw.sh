@@ -20,5 +20,10 @@ b1() {
     echo -e "${GR}${t1}${NC}"
 }
 
+c1() {
+    gowitness scan single --url ${w1}
+}
+
 # Execution
 b1
+c1
