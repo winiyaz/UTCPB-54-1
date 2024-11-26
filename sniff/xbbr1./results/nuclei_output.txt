@@ -17,3 +17,6 @@
 [robots-txt-endpoint] [http] [info] https://r.newsletters.analyticsvidhya.com/robots.txt
 [robots-txt-endpoint] [http] [info] https://id.analyticsvidhya.com/robots.txt
 [tls-sni-proxy] [http] [info] https://r.newsletters.analyticsvidhya.com
+[waf-detect:nginxgeneric] [http] [info] https://r.newsletters.analyticsvidhya.com/
+[wordpress-detect] [http] [info] https://www.brevo.com
+[wordpress-detect] [http] [info] https://id.analyticsvidhya.com/wp-admin/install.php
